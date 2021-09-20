@@ -1,17 +1,20 @@
 import dgram from 'dgram'
 
+type UdpCallback = (msg:Buffer,rinfo:dgram.RemoteInfo)=>void
+
 export default class UdpServer{
 
     private server = dgram.createSocket('udp4')
 
-    constructor(){
+    constructor(callback:UdpCallback){
         this.server.on('error', (err) => {
             console.log(`server error:\n${err.stack}`);
                 this.server.close();
             });
             
             this.server.on('message', (msg, rinfo) => {
-                console.log(`server got: ${msg[0]} ${msg[1]} from ${rinfo.address}:${rinfo.port}`);
+                
+                callback(msg,rinfo)
             });
             
             this.server.on('listening', () => {
@@ -23,4 +26,5 @@ export default class UdpServer{
     start():void{
         this.server.bind(8080)
     }
+
 }

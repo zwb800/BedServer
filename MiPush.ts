@@ -8,12 +8,10 @@ export default class MiPush{
         var params = querystring.stringify({
             payload:"payload",
             restricted_package_name:"com.jnrecycle.app",
-            'extra.sound_uri':'android.resource://com.jnrecycle.app/raw/bed_empty',
             pass_through:'0',
             title:title,
             description:description,
-            notify_type:"-1",
-            'extra.channel_id':'bed_empty'
+            'extra.channel_id':'bed_occupied'
         })
 
         var req = https.request("https://api.xmpush.xiaomi.com/v2/message/all",{ 

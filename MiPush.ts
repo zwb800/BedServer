@@ -3,7 +3,7 @@ import format from 'date-fns/format'
 import querystring from 'querystring'
 
 export default class MiPush{
-    private static send(title:string,description:string):void{
+    private static send(title:string,description:string,nid:number):void{
         // new URLSearchParams()
         var params = querystring.stringify({
             payload:"payload",
@@ -11,6 +11,7 @@ export default class MiPush{
             pass_through:'0',
             title:title,
             description:description,
+            notify_id:nid,
             'extra.channel_id':'bed_occupied'
         })
 
@@ -34,21 +35,26 @@ export default class MiPush{
             })
 
             response.on('error',()=>{
-                console.log("error")
+                console.error("error")
             })
         })
 
+        req.on("error",(e)=>{
+            console.error(e)
+        })
+    
         req.end(params)
+        
 
         
     }
 
     static bedEmpty(bedno:number){
-        this.send(bedno+"床起床",this.dateStr())
+        this.send(bedno+"床起床",this.dateStr(),bedno)
     }
 
     static bedOccupied(bedno:number){
-        this.send(bedno+"床躺下",this.dateStr())
+        this.send(bedno+"床躺下",this.dateStr(),bedno)
     }
 
     private static dateStr(){

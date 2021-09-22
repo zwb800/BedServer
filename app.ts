@@ -5,16 +5,21 @@ import MiPush from './MiPush'
 
 const beds = new Map<string,Bed>()
 
-Bed.bedMapping.set("192.168.2.225",1)
-Bed.bedMapping.set("192.168.2.151",2)
-Bed.bedMapping.set("192.168.2.175",3)
+beds.set("192.168.2.225",new Bed(1,300))
+
+beds.set("192.168.2.225",new Bed(1,300))
+beds.set("192.168.2.151",new Bed(2,300))
+beds.set("192.168.2.175",new Bed(3,300))
+beds.set("192.168.2.107",new Bed(4,300))
+beds.set("192.168.2.158",new Bed(5,300))
+beds.set("192.168.2.218",new Bed(6,60))
 
 
 var lastStr = ""
 const server = new UdpServer((msg,rinfo)=>{
     let val = msg[0]<<8 | msg[1]
 
-    var bed:Bed = new Bed()
+    var bed:Bed = new Bed(0,300)
 
     if(beds.has(rinfo.address))
     {

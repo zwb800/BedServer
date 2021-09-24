@@ -3,7 +3,7 @@ import format from 'date-fns/format'
 import querystring from 'querystring'
 
 export default class MiPush{
-    private static send(title:string,description:string,nid:number):void{
+    private static send(title:string,description:string,nid:number,channel:string):void{
         // new URLSearchParams()
         var params = querystring.stringify({
             payload:"payload",
@@ -12,7 +12,7 @@ export default class MiPush{
             title:title,
             description:description,
             notify_id:nid,
-            'extra.channel_id':'bed_occupied'
+            'extra.channel_id':channel
         })
 
         var req = https.request("https://api.xmpush.xiaomi.com/v2/message/all",{ 
@@ -50,11 +50,11 @@ export default class MiPush{
     }
 
     static bedEmpty(bedno:number){
-        this.send(bedno+"床起床",this.dateStr(),bedno)
+        this.send(bedno+"床起床",this.dateStr(),bedno,"bed_empty")
     }
 
     static bedOccupied(bedno:number){
-        this.send(bedno+"床躺下",this.dateStr(),bedno)
+        this.send(bedno+"床躺下",this.dateStr(),bedno,"bed_occupied")
     }
 
     private static dateStr(){

@@ -5,12 +5,12 @@ import Bed from './Bed'
 const beds = new Map<string,Bed>()
 
 
-beds.set("192.168.2.225",new Bed(1,200))
+beds.set("192.168.2.225",new Bed(1,150))
 beds.set("192.168.2.151",new Bed(2,200))
-beds.set("192.168.2.175",new Bed(3,200))
+beds.set("192.168.2.175",new Bed(3,350))
 beds.set("192.168.2.107",new Bed(4,250))
 beds.set("192.168.2.158",new Bed(5,100))
-beds.set("192.168.2.218",new Bed(6,30))
+beds.set("192.168.2.218",new Bed(6,15))
 
 
 var lastStr = ""

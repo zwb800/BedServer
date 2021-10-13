@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+daemon/bed.exe
+.gitignore
+daemon/bed.xml
+daemon/bed.exe.config

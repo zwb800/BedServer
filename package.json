@@ -5,12 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "ts-node app.ts"
+    "serve": "ts-node app.ts",
+    "install": "ts-node installsvc.ts"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "date-fns": "^2.24.0",
+    "node-windows": "^1.0.0-beta.6",
     "ts-node": "^10.2.1"
   }
 }

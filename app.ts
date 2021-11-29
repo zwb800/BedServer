@@ -5,12 +5,12 @@ import Bed from './Bed'
 const beds = new Map<string,Bed>()
 
 
-beds.set("192.168.2.225",new Bed(1,150))
-beds.set("192.168.2.151",new Bed(2,200))
-beds.set("192.168.2.175",new Bed(3,350))
-beds.set("192.168.2.107",new Bed(4,250))
-beds.set("192.168.2.158",new Bed(5,100))
-beds.set("192.168.2.218",new Bed(6,10))
+beds.set("192.168.2.226",new Bed(1,10))
+beds.set("192.168.2.151",new Bed(2,15))
+beds.set("192.168.2.176",new Bed(3,10))
+beds.set("192.168.2.107",new Bed(4,220))
+beds.set("192.168.2.158",new Bed(5,15))
+beds.set("192.168.2.218",new Bed(6,20))
 
 
 var lastStr = ""
@@ -27,6 +27,7 @@ const server = new UdpServer((msg,rinfo)=>{
     }
     else
     {
+        console.log("unknow bed:"+rinfo.address)
         beds.set(rinfo.address,bed)
     }
 
@@ -37,13 +38,21 @@ const server = new UdpServer((msg,rinfo)=>{
 
     if(bed.empty != newState)
     {
-        if(newState)
-            bed.triggerEmpty()
-        else
-            bed.triggerOccupied()
+        
+        if(bed.stateChangeCounter>5){
+            if(newState)
+                bed.triggerEmpty()
+            else
+                bed.triggerOccupied()
 
-        bed.empty = newState
+            bed.empty = newState
+            bed.stateChangeCounter = 0
+        }
+        else
+            bed.stateChangeCounter++
     }
+    else
+        bed.stateChangeCounter = 0
         
 
     var str = ""

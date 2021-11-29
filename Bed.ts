@@ -7,6 +7,7 @@ export default class Bed{
     pressure:number = 0
     no:number
     threshold:number = 300
+    stateChangeCounter:number = 0
     static bedMapping = new Map<string,number>()
 
     constructor(no:number,threshold:number){

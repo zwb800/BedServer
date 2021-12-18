@@ -8,7 +8,7 @@ var Service = require('node-windows').Service
 var svc = new Service({
     name:'Bed',
     description: 'Bed server.',
-    script: path.resolve('./app.ts'),
+    script: path.join(__dirname, 'app.js'),
 //   execPath: 'ts-node',
     nodeOptions: [
       '--harmony',

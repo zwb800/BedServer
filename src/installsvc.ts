@@ -1,6 +1,6 @@
 
 
-import path from 'path'
+import * as path from 'path'
 
 var Service = require('node-windows').Service
 
@@ -8,8 +8,8 @@ var Service = require('node-windows').Service
 var svc = new Service({
     name:'Bed',
     description: 'Bed server.',
-    script: path.resolve('./app.ts'),
-//   execPath: 'ts-node',
+    script: path.join(__dirname,'app.ts'),
+  // execPath: 'ts-node',
     nodeOptions: [
       '--harmony',
       '--max_old_space_size=4096'

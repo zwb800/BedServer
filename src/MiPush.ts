@@ -1,6 +1,6 @@
-import https from 'https'
+import * as https from 'https'
 import format from 'date-fns/format'
-import querystring from 'querystring'
+import * as querystring from 'querystring'
 
 export default class MiPush{
     private static send(title:string,description:string,nid:number,channel:string):void{

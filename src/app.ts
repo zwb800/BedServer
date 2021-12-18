@@ -6,11 +6,11 @@ const beds = new Map<string,Bed>()
 
 
 beds.set("192.168.2.226",new Bed(1,10))
-beds.set("192.168.2.151",new Bed(2,15))
+beds.set("192.168.2.152",new Bed(2,15))
 beds.set("192.168.2.176",new Bed(3,10))
 beds.set("192.168.2.107",new Bed(4,220))
 beds.set("192.168.2.158",new Bed(5,15))
-beds.set("192.168.2.218",new Bed(6,20))
+beds.set("192.168.2.218",new Bed(6,50))
 
 
 var lastStr = ""

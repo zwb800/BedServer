@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "serve": "ts-node app.ts",
-    "install": "ts-node installsvc.ts"
+    "serve": "ts-node src/app.ts",
+    "installsvc": "node build/installsvc.js",
+    "uninstallsvc": "node build/uninstallsvc.js"
   },
   "author": "",
   "license": "ISC",

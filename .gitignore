@@ -106,3 +106,5 @@ daemon/bed.exe
 .gitignore
 daemon/bed.xml
 daemon/bed.exe.config
+
+build/*

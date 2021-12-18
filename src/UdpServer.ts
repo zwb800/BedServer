@@ -1,4 +1,4 @@
-import dgram from 'dgram'
+import * as dgram from 'dgram'
 
 type UdpCallback = (msg:Buffer,rinfo:dgram.RemoteInfo)=>void
 
